@@ -1,37 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&&family=New+Amsterdam&display=swap");
+
+.matemasie-regular {
+	font-family: "Matemasie", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
-}
-
-html {
-	font-family: sans-serif;
-}
-
-body {
 	margin: 0;
-}
-
-button:focus {
-	outline: none;
+	padding: 0;
 }
 
 header {
+	background: #00329e;
 	width: 100%;
 	height: 4rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	padding: 0 2.5rem;
-	background: #00329e;
+	font-family: "Matemasie", sans-serif;
+	letter-spacing: 0.2rem;
 }
 
 header h1 {
-	margin: 0;
-	color: white;
-	font-size: 1.5rem;
+	color: #fff;
 }
 
-header button {
-	font: inherit;
+main {
+	font-family: "New Amsterdam", sans-serif;
+	letter-spacing: 0.1rem;
+}
+
+.add-movie {
+	text-align: center;
+	box-shadow: 0 0 10px rgba(0, 50, 158, 0.274);
+	margin: 1rem auto;
+	width: 53vw;
+	border-radius: 1rem;
+}
+
+.add-movie h2 {
+	margin: 0.5rem;
+}
+
+.add-movie button {
+	margin: 1rem;
 	padding: 0.5rem 1rem;
 	background: #f67722;
 	border: 1px solid #f67722;
@@ -39,116 +53,69 @@ header button {
 	border-radius: 6px;
 	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.26);
 	cursor: pointer;
+	font-weight: 600;
 }
 
-header button:hover,
-header button:active {
+.add-movie button:hover,
+.add-movie button:active {
 	background: #f3cc4b;
 	border-color: #f3cc4b;
 	color: #995200;
 }
 
-label {
-	font-weight: bold;
-	margin: 0.5rem 0;
-	color: #464646;
+.card {
+	margin: 0 7rem;
+	padding: 1rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 5px rgba(247, 99, 0, 0.801);
 }
 
-input {
-	font: inherit;
-	border: 1px solid #ccc;
+.card label {
+	text-align: left;
+	font-size: larger;
+	margin-right: 0.5rem;
+	display: block;
+	color: #f67722;
+}
+
+.card input {
+	width: 100%;
+	margin-bottom: 0.5rem;
 	padding: 0.4rem 0.2rem;
 	color: #383838;
+	border: 1px solid #f67722;
 }
 
-input:focus {
+.card input:focus {
 	outline: none;
 	background: #fff1c4;
 }
 
-.btn {
-	font: inherit;
-	padding: 0.5rem 1.5rem;
-	border: 1px solid #00329e;
-	background: #00329e;
-	color: white;
-	border-radius: 6px;
-	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.26);
-	cursor: pointer;
-	margin: 0 0.5rem;
-}
-
-.btn:hover,
-.btn:active {
-	background: #f67722;
-	border-color: #f67722;
-}
-
-.btn--passive {
-	color: #00329e;
-	background: transparent;
-	border: none;
-	box-shadow: none;
-}
-
-.btn--passive:hover,
-.btn--passive:active {
-	background: #aec6f8;
-}
-
-.btn--danger {
-	background: #d30808;
-	color: white;
-	border-color: #d30808;
-}
-
-.btn--danger:hover,
-.btn--danger:active {
-	background: #ff3217;
-	border-color: #ff3217;
-}
-
-.modal {
-	position: fixed;
-	z-index: 100;
-	background: white;
-	border-radius: 10px;
-	width: 80%;
-	top: 30vh;
-	left: 10%;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	display: none;
-}
-
-.modal.visible {
-	display: block;
-	animation: fade-slide-in 0.3s ease-out forwards;
-}
-
-.modal .modal__title {
+.card button {
 	margin: 0;
-	padding: 1rem;
-	border-bottom: 1px solid #00329e;
-	background: #00329e;
-	color: white;
-	border-radius: 10px 10px 0 0;
+	background-color: #00329e;
+	border: none;
 }
 
-.modal .modal__content {
-	padding: 1rem;
+.card button:hover {
+	background-color: #aec6f8;
+	color: #000;
 }
 
-.modal .modal__actions {
-	padding: 1rem;
-	display: flex;
-	justify-content: flex-end;
+.movie-list {
+	list-style-type: none;
+	width: 46.5rem;
+	max-width: 90%;
+	border-radius: 1rem;
+	margin: 1rem auto;
+	padding: 0.2rem 0.5rem;
 }
 
 .movie-element {
-	margin: 1rem 0;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	border-radius: 10px;
 	display: flex;
+	margin: 0.5rem 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+	border-radius: 0.5rem;
 }
 
 .movie-element h2,
@@ -171,9 +138,10 @@ input:focus {
 }
 
 .movie-element__image {
-	flex: 1;
+	flex: 0.5;
 	border-radius: 10px 0 0 10px;
 	overflow: hidden;
+	padding: 0.2rem;
 }
 
 .movie-element__image img {
@@ -187,66 +155,19 @@ input:focus {
 	padding: 1rem;
 }
 
-.card {
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
-#entry-text {
-	width: 40rem;
-	margin: 2rem auto;
-	max-width: 80%;
-	padding: 1rem;
-}
-
-#entry-text p {
-	font-size: 1.5rem;
+.movie-element__del {
+	flex: 0.3;
 	text-align: center;
 }
 
-#movie-list {
-	list-style: none;
-	width: 40rem;
-	max-width: 90%;
-	margin: 1rem auto;
-	padding: 0;
+.movie-element__del button {
+	background: none;
+	border: none;
+	padding: 1.7rem 1rem;
+	cursor: pointer;
+	border-radius: 0.5rem;
 }
 
-#backdrop {
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.75);
-	z-index: 10;
-	pointer-events: none;
-	display: none;
-}
-
-#backdrop.visible {
-	display: block;
-	pointer-events: all;
-}
-
-#add-modal .modal__content {
-	display: flex;
-	flex-direction: column;
-}
-
-@media (min-width: 768px) {
-	.modal {
-		width: 40rem;
-		left: calc(50% - 20rem);
-	}
-}
-
-@keyframes fade-slide-in {
-	from {
-		transform: translateY(-5rem);
-	}
-	to {
-		transform: translateY(0);
-	}
+.movie-element__del button:hover {
+	background-color: rgb(255, 0, 0);
 }
