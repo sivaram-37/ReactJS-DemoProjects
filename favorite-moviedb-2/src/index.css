@@ -72,10 +72,11 @@ main {
 .note-list {
 	box-shadow: 0 0 10px #ff0062;
 	width: 50vw;
-	height: 65vh;
+	max-height: 65vh;
 	list-style-type: none;
 	overflow-y: auto;
 	overflow-x: hidden;
+	scrollbar-width: thin;
 }
 
 .note {

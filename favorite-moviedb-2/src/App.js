@@ -1,13 +1,5 @@
 import { useState } from "react";
 
-function Button({ className = "", children, onClick }) {
-	return (
-		<button className={className} onClick={onClick}>
-			{children}
-		</button>
-	);
-}
-
 export default function App() {
 	const [notes, setNotes] = useState([]);
 
@@ -227,5 +219,13 @@ function FormAddNote({ setNotes, setShowAddNote }) {
 
 			<Button className="btn addnotes-btn">ADD</Button>
 		</form>
+	);
+}
+
+function Button({ className = "", children, onClick }) {
+	return (
+		<button className={className} onClick={onClick}>
+			{children}
+		</button>
 	);
 }
