@@ -5,12 +5,14 @@ export default function App() {
 
 	return (
 		<div>
-			<Heading />
+			<Heading>
+				<h1>📝NOTEBOOK</h1>
+				<SearchBar notes={notes} />
+				<NumResult notes={notes} />
+			</Heading>
 
 			<Main>
 				<DisplayUI>
-					<SearchBar />
-
 					<NoteList setNotes={setNotes} notes={notes} />
 				</DisplayUI>
 
@@ -20,33 +22,21 @@ export default function App() {
 	);
 }
 
-function Heading() {
-	return (
-		<header>
-			<h1>NOTEBOOK</h1>
-		</header>
-	);
+function NumResult({ notes }) {
+	const totalNotes = notes.length;
+	return <h3 className="numresult">Found {totalNotes} Notes</h3>;
 }
 
-function Main({ children }) {
-	return <main>{children}</main>;
-}
-
-function DisplayUI({ children }) {
-	return <div className="display">{children}</div>;
-}
-
-function SearchBar() {
+function SearchBar({ notes }) {
 	const [searchInp, setSearchInp] = useState("");
 
 	function handleSubmit(e) {
 		e.preventDefault();
-
 		if (!searchInp) return;
 	}
 
 	return (
-		<form className="search container" onSubmit={handleSubmit}>
+		<form className="search" onSubmit={handleSubmit}>
 			<input
 				className="search-input"
 				type="text"
@@ -57,6 +47,18 @@ function SearchBar() {
 			<Button>🔍</Button>
 		</form>
 	);
+}
+
+function Heading({ children }) {
+	return <header>{children}</header>;
+}
+
+function Main({ children }) {
+	return <main>{children}</main>;
+}
+
+function DisplayUI({ children }) {
+	return <div className="display">{children}</div>;
 }
 
 function NoteList({ notes, setNotes }) {
@@ -114,6 +116,7 @@ function Note({ note, setNotes }) {
 				<div className="note-element__info">
 					<h1>{note.title}</h1>
 				</div>
+
 				<div className="note-element__btn">
 					<Button className="note-btn del" onClick={handleDelete}>
 						<svg
