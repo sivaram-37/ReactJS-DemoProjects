@@ -1,19 +1,22 @@
 import { useState } from "react";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 export default function App() {
-	const [notes, setNotes] = useState([]);
+	const [notes, setNotes] = useLocalStorageState([], "notes");
+
+	const [searchInp, setSearchInp] = useState("");
 
 	return (
 		<div>
 			<Heading>
 				<h1>📝NOTEBOOK</h1>
-				<SearchBar notes={notes} />
+				<SearchBar searchInp={searchInp} setSearchInp={setSearchInp} />
 				<NumResult notes={notes} />
 			</Heading>
 
 			<Main>
 				<DisplayUI>
-					<NoteList setNotes={setNotes} notes={notes} />
+					<NoteList setNotes={setNotes} notes={notes} searchInp={searchInp} />
 				</DisplayUI>
 
 				<Actions setNotes={setNotes} />
@@ -27,9 +30,7 @@ function NumResult({ notes }) {
 	return <h3 className="numresult">Found {totalNotes} Notes</h3>;
 }
 
-function SearchBar({ notes }) {
-	const [searchInp, setSearchInp] = useState("");
-
+function SearchBar({ searchInp, setSearchInp }) {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (!searchInp) return;
@@ -42,9 +43,8 @@ function SearchBar({ notes }) {
 				type="text"
 				value={searchInp}
 				onChange={(e) => setSearchInp(e.target.value)}
-				placeholder="search note..."
+				placeholder="🔍 search note..."
 			/>
-			<Button>🔍</Button>
 		</form>
 	);
 }
@@ -61,13 +61,18 @@ function DisplayUI({ children }) {
 	return <div className="display">{children}</div>;
 }
 
-function NoteList({ notes, setNotes }) {
+function NoteList({ notes, setNotes, searchInp }) {
 	return (
 		<ul className="note-list container">
 			{notes.length === 0 ? (
 				<h2 style={{ textAlign: "center" }}>Add Notes to display here!!!</h2>
 			) : (
-				notes.map((note) => <Note setNotes={setNotes} note={note} key={note.id} />)
+				notes.map(
+					(note) =>
+						note.title.includes(searchInp) && (
+							<Note setNotes={setNotes} note={note} key={note.id} />
+						)
+				)
 			)}
 		</ul>
 	);
@@ -82,37 +87,8 @@ function Note({ note, setNotes }) {
 	}
 
 	return (
-		<li className="note">
+		<li className="note" onClick={() => setShowSummary((show) => !show)}>
 			<div className="note-element">
-				<div className="note-element__btn">
-					<Button
-						className="note-btn view"
-						onClick={() => setShowSummary((show) => !show)}
-					>
-						{showSummary ? (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								height="32px"
-								viewBox="0 -960 960 960"
-								width="32px"
-								fill="#000"
-							>
-								<path d="m357-384 123-123 123 123 57-56-180-180-180 180 57 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-							</svg>
-						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								height="32px"
-								viewBox="0 -960 960 960"
-								width="32px"
-								fill="#000"
-							>
-								<path d="m480-340 180-180-57-56-123 123-123-123-57 56 180 180Zm0 260q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-							</svg>
-						)}
-					</Button>
-				</div>
-
 				<div className="note-element__info">
 					<h1>{note.title}</h1>
 				</div>
@@ -121,9 +97,9 @@ function Note({ note, setNotes }) {
 					<Button className="note-btn del" onClick={handleDelete}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							height="32px"
+							height="28px"
 							viewBox="0 -960 960 960"
-							width="32px"
+							width="28px"
 							fill="#000"
 						>
 							<path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
@@ -145,6 +121,7 @@ function Actions({ setNotes }) {
 			{showAddNote ? (
 				<>
 					<FormAddNote setNotes={setNotes} setShowAddNote={setShowAddNote} />
+
 					<Button
 						className="btn action-btn"
 						onClick={() => setShowAddNote((show) => !show)}
@@ -209,18 +186,18 @@ function FormAddNote({ setNotes, setShowAddNote }) {
 				onChange={(e) => setTitle(e.target.value)}
 			/>
 
-			<div>
-				<label>Summary</label>
-				<textarea
-					rows={10}
-					className="textarea"
-					type="text"
-					value={summary}
-					onChange={(e) => setSummary(e.target.value)}
-				/>
-			</div>
+			<label>Summary</label>
+			<textarea
+				rows={10}
+				className="textarea"
+				type="text"
+				value={summary}
+				onChange={(e) => setSummary(e.target.value)}
+			/>
 
-			<Button className="btn addnotes-btn">ADD</Button>
+			<div className="box-btn">
+				<Button className="btn addnotes-btn">ADD</Button>
+			</div>
 		</form>
 	);
 }
