@@ -1,0 +1,28 @@
+.pricing {
+	height: 100vh;
+	background-color: #222;
+	padding: 0;
+}
+
+.pricing section {
+	height: 78vh;
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+
+.pricing h1 {
+	color: #aaa;
+	font-size: 3rem;
+	margin-bottom: 2rem;
+}
+
+.pricing p {
+	color: #d7d7d7;
+	font-size: 1.3rem;
+	line-height: 1.5;
+}
+
+.priceImg {
+	width: 50rem;
+}

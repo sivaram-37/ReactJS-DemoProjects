@@ -1,0 +1,43 @@
+.header {
+	color: #fff;
+	background-color: #222;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+}
+
+.header input {
+	width: 15vw;
+	border: none;
+	border-radius: 12px;
+	padding: 0.5rem 1rem;
+}
+
+.header input:focus {
+	background-color: #ccc;
+	outline: 3px solid #1435f0;
+}
+
+.header ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	width: 20vw;
+	font-size: 1.5rem;
+}
+
+.header a:link,
+.header a:visited {
+	text-decoration: none;
+	color: #000;
+	background-color: #00ff0d;
+	padding: 0.5rem 1rem;
+	border-radius: 12px;
+}
+
+.header a:hover,
+.header a:active {
+	color: #ccc;
+	background-color: #00ad09;
+}

@@ -1,0 +1,35 @@
+.addBlog {
+	font-size: 1.5rem;
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+.container {
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+}
+
+.title {
+	width: 20vw;
+}
+
+.content {
+	width: 60vw;
+}
+
+.btn {
+	font-size: 1.2rem;
+	color: #fff;
+	background-color: #222;
+	width: 10vw;
+	border: none;
+	border-radius: 10px;
+}
+
+.btn:hover {
+	color: #222;
+	background-color: #ccc;
+}
