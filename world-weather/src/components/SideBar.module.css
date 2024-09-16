@@ -1,0 +1,33 @@
+.sidebar {
+	background-color: var(--color-dark--0);
+	width: 35vw;
+	padding: 3rem;
+}
+
+.logo:link,
+.logo:visited {
+	text-decoration: none;
+	color: var(--color-light--2);
+	width: 20vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	padding: 0 0.8rem;
+	border-radius: 10px;
+}
+
+.logo:hover,
+.logo:active {
+	color: var(--color-light--1);
+}
+
+.logo img {
+	width: 3rem;
+	height: 3rem;
+	margin-right: 1rem;
+}
+
+.logo h1 {
+	font-size: 3rem;
+}
