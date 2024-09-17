@@ -1,0 +1,17 @@
+.main {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #f76336;
+}
+
+.main h1 {
+	font-size: 4rem;
+}
+
+.main p {
+	font-size: 6rem;
+}

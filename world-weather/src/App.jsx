@@ -4,6 +4,7 @@ import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
 import Weather from "./components/Weather";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
 	return (
@@ -16,7 +17,7 @@ function App() {
 					<Route path="app" element={<AppLayout />}>
 						<Route path="weather" element={<Weather />} />
 					</Route>
-					<Route path="*" element={<h1>Page Not Found :(</h1>} />
+					<Route path="*" element={<PageNotFound />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
