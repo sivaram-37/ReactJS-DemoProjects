@@ -1,27 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
-import styles from "./Map.module.css";
 import { useEffect, useState } from "react";
-import {
-	MapContainer,
-	Marker,
-	Popup,
-	TileLayer,
-	useMap,
-	useMapEvents,
-} from "react-leaflet";
-import { useCities } from "../contexts/CitiesProvider";
+import { useNavigate } from "react-router-dom";
+import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useURLPosition } from "../hooks/useURLPosition";
+import styles from "./Map.module.css";
 import Button from "./Button";
 
 function Map() {
-	const { cities } = useCities();
 	const [mapPosition, setMapPosition] = useState([13.0843, 80.2705]);
 	const [mapLat, mapLng] = useURLPosition();
 	const {
 		getPosition,
-		isLoading: isPositionLoading,
+		isLoading: isGeolocationLoading,
 		position: currentPosition,
 	} = useGeolocation();
 
@@ -42,8 +33,8 @@ function Map() {
 	return (
 		<div className={styles.mapContainer}>
 			{!currentPosition && (
-				<Button type="position" onClick={getPosition}>
-					{isPositionLoading ? "Loading..." : "Use Your Location"}
+				<Button type="position" onClick={() => getPosition()}>
+					{isGeolocationLoading ? "Loading..." : "Use Your Location"}
 				</Button>
 			)}
 
@@ -57,14 +48,6 @@ function Map() {
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
 				/>
-
-				{cities.map((city) => (
-					<Marker position={[city.position.lat, city.position.lng]} key={city.id}>
-						<Popup>
-							<span>{city.cityName}</span>
-						</Popup>
-					</Marker>
-				))}
 
 				{currentPosition && <Marker position={mapPosition} />}
 
@@ -84,7 +67,7 @@ function ChangeCity({ position }) {
 function DetectClick() {
 	const navigate = useNavigate();
 	useMapEvents({
-		click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+		click: (e) => navigate(`weather?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
 	});
 }
 

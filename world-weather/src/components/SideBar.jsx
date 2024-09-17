@@ -5,7 +5,7 @@ import Footer from "./Footer";
 function SideBar() {
 	return (
 		<aside className={styles.sidebar}>
-			<Link className={styles.logo}>
+			<Link to="/" className={styles.logo}>
 				<img src="/icon.png" alt="logo" />
 				<h1>World Weather</h1>
 			</Link>

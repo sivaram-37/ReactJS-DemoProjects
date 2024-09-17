@@ -1,14 +1,17 @@
 .sidebar {
 	background-color: var(--color-dark--0);
-	width: 35vw;
-	padding: 3rem;
+	width: 40rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1rem 0;
 }
 
 .logo:link,
 .logo:visited {
 	text-decoration: none;
 	color: var(--color-light--2);
-	width: 20vw;
+	width: 28rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
