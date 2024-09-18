@@ -2,8 +2,7 @@
 	background-image: linear-gradient(rgba(36, 42, 46, 0.5), rgba(36, 42, 46, 0.8)),
 		url("/bg.jpg");
 	background-repeat: no-repeat;
-	/* background-size: contain; */
-	background-size: 137rem 46rem;
+	background-size: 137rem 60rem;
 	height: 100vh;
 }
 
@@ -19,12 +18,13 @@
 }
 
 .home section h1 {
+	color: var(--color-light--2);
 	font-size: 4.5rem;
 	word-spacing: 0.5rem;
 	letter-spacing: 0.1rem;
 }
 
 .home section h2 {
+	color: var(--color-light--1);
 	font-size: 2rem;
-	color: var(--color-light--4);
 }

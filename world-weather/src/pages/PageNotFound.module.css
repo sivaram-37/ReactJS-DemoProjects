@@ -5,7 +5,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #f76336;
+	background-color: var(--color-danger);
 }
 
 .main h1 {

@@ -1,0 +1,16 @@
+.product {
+	margin: 2.5rem;
+	padding: 2.5rem 5rem;
+	background-color: var(--color-dark--1);
+}
+
+.product img {
+	width: 500px;
+	margin: 0 25vw;
+}
+
+.product p {
+	font-size: 1.5rem;
+	width: 80vw;
+	margin: 4rem auto;
+}
