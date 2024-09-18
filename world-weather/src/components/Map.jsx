@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-leaflet";
@@ -12,9 +11,10 @@ function Map() {
 	const [mapLat, mapLng] = useURLPosition();
 	const {
 		getPosition,
-		isLoading: isGeolocationLoading,
+		isLoading: isPositionLoading,
 		position: currentPosition,
 	} = useGeolocation();
+	const navigate = useNavigate();
 
 	useEffect(
 		function () {
@@ -25,16 +25,19 @@ function Map() {
 
 	useEffect(
 		function () {
-			if (currentPosition) setMapPosition([currentPosition.lat, currentPosition.lng]);
+			if (currentPosition) {
+				setMapPosition([currentPosition.lat, currentPosition.lng]);
+				navigate(`weather?lat=${currentPosition.lat}&lng=${currentPosition.lng}`);
+			}
 		},
-		[currentPosition]
+		[currentPosition, navigate]
 	);
 
 	return (
 		<div className={styles.mapContainer}>
 			{!currentPosition && (
-				<Button type="position" onClick={() => getPosition()}>
-					{isGeolocationLoading ? "Loading..." : "Use Your Location"}
+				<Button type="position" onClick={getPosition}>
+					{isPositionLoading ? "Loading..." : "Use Your Location"}
 				</Button>
 			)}
 
@@ -49,7 +52,7 @@ function Map() {
 					url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
 				/>
 
-				{currentPosition && <Marker position={mapPosition} />}
+				{(currentPosition || (mapLat && mapLng)) && <Marker position={mapPosition} />}
 
 				<ChangeCity position={mapPosition} />
 				<DetectClick />
@@ -58,6 +61,7 @@ function Map() {
 	);
 }
 
+// eslint-disable-next-line react/prop-types
 function ChangeCity({ position }) {
 	const map = useMap();
 	map.setView(position);

@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Pricing from "./pages/Pricing";
-import Login from "./pages/Login";
+import Product from "./pages/Product";
 import AppLayout from "./pages/AppLayout";
 import Weather from "./components/Weather";
 import PageNotFound from "./pages/PageNotFound";
@@ -12,9 +11,9 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route index element={<Home />} />
-					<Route path="pricing" element={<Pricing />} />
-					<Route path="login" element={<Login />} />
+					<Route path="product" element={<Product />} />
 					<Route path="app" element={<AppLayout />}>
+						<Route index element={<Navigate replace to="weather" />} />
 						<Route path="weather" element={<Weather />} />
 					</Route>
 					<Route path="*" element={<PageNotFound />} />
