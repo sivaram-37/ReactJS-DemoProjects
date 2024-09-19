@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { BsFillHouseDoorFill } from "react-icons/bs";
+import { AiFillRead } from "react-icons/ai";
+import { LuContact } from "react-icons/lu";
 import styles from "./PageNav.module.css";
 
 function PageNav() {
@@ -11,10 +14,19 @@ function PageNav() {
 
 			<ul>
 				<li>
-					<NavLink to="/">Home</NavLink>
+					<NavLink to="/">
+						<BsFillHouseDoorFill size={20} />
+					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/product">About Us</NavLink>
+					<NavLink to="/contact">
+						<LuContact size={22} />
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/product">
+						<AiFillRead size={22} />
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

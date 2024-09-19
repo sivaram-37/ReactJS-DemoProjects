@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useURLPosition } from "../hooks/useURLPosition";
-import { WiHumidity, WiStrongWind, WiCloud } from "react-icons/wi";
+import { BsWind } from "react-icons/bs";
+import { WiHumidity, WiCloud } from "react-icons/wi";
+import { FaTemperatureLow } from "react-icons/fa";
+
 import Message from "../components/Message";
 import Spinner from "../components/Spinner";
 import styles from "./Weather.module.css";
@@ -97,7 +100,10 @@ function Weather() {
 				<div className={styles.grid_1}>
 					<div className={styles.flexCol}>
 						<p className={styles.topic}>Temperature</p>
-						<p className={styles.temp}>{weatherCurrent.temperature_2m} &deg;F</p>
+						<div className={styles.flexRow}>
+							<FaTemperatureLow size={30} />
+							<p className={styles.temp}>{weatherCurrent.temperature_2m} &deg;F</p>
+						</div>
 					</div>
 				</div>
 				<div className={styles.grid_2}>
@@ -121,7 +127,7 @@ function Weather() {
 					</div>
 					<div className={styles.flexCol}>
 						<p className={styles.topic}>Wind Speed</p>
-						<WiStrongWind size={40} />
+						<BsWind size={40} />
 						<p className={styles.val}>{weatherCurrent.wind_speed_10m} Km/h</p>
 					</div>
 				</div>

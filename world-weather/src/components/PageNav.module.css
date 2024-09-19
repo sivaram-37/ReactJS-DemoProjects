@@ -34,11 +34,19 @@
 	font-size: 1.5rem;
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--color-brand--3);
-	background-color: var(--color-light--2);
+	color: var(--color-dark--1);
+	background-color: var(--color-light--3);
 	text-transform: uppercase;
-	padding: 0.5rem 2rem;
+	padding: 1rem 3rem;
 	border-radius: 12px;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.nav a:hover,
+.nav a:active {
+	color: var(--color-light--2);
+	background-color: var(--color-dark--3);
 }
 
 .nav a:global(.active) {
