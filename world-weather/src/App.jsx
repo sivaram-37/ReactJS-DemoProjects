@@ -12,6 +12,7 @@ import Twitter from "./components/Twitter";
 import LinkedIn from "./components/LinkedIn";
 import Gmail from "./components/Gmail";
 import Phone from "./components/Phone";
+import Facebook from "./components/Facebook";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 						<Route path="whatsapp" element={<WhatsApp />} />
 						<Route path="twitter" element={<Twitter />} />
 						<Route path="linkedin" element={<LinkedIn />} />
+						<Route path="facebook" element={<Facebook />} />
 					</Route>
 					<Route path="app" element={<AppLayout />}>
 						<Route index element={<Navigate replace to="weather" />} />

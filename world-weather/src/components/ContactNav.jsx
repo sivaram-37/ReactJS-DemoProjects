@@ -1,10 +1,11 @@
 import {
+	BiLogoFacebookCircle,
 	BiLogoGmail,
 	BiLogoInstagramAlt,
 	BiLogoLinkedinSquare,
 	BiLogoWhatsapp,
-	BiPhone,
 } from "react-icons/bi";
+import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import styles from "./ContactNav.module.css";
@@ -17,32 +18,37 @@ function ContactNav() {
 				<ul>
 					<li>
 						<NavLink to="phone">
-							<BiPhone color="#fff" size={30} />
+							<BsFillTelephoneFill color="#00c46a" size={30} />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="instagram">
-							<BiLogoInstagramAlt color="#fff" size={30} />
+							<BiLogoInstagramAlt color="#E1306C" size={30} />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="gmail">
-							<BiLogoGmail color="#fff" size={30} />
+							<BiLogoGmail color="#b23121" size={30} />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="whatsapp">
-							<BiLogoWhatsapp color="#fff" size={30} />
+							<BiLogoWhatsapp color="#00c46a" size={30} />
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="facebook">
+							<BiLogoFacebookCircle color="#3b5998" size={30} />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="twitter">
-							<FaXTwitter color="#fff" size={30} />
+							<FaXTwitter color="#ffffff" size={30} />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="linkedin">
-							<BiLogoLinkedinSquare color="#fff" size={30} />
+							<BiLogoLinkedinSquare color="#0077B5" size={30} />
 						</NavLink>
 					</li>
 				</ul>
