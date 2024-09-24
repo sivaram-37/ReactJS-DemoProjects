@@ -6,6 +6,8 @@
 // import UncontrolledComponent from "./LearningControlledAndUnControlledComponent/UncontrolledComponent";
 // import LearningRoutes from "./LearningRouterWithSuspense/LearningRoutes";
 
+import Account from "./LearningUseReducer/Account";
+
 function App() {
 	return (
 		<div>
@@ -17,6 +19,7 @@ function App() {
 			{/* <ControlledComponent />
 			<UncontrolledComponent /> */}
 			{/* <LearningRoutes /> */}
+			<Account />
 		</div>
 	);
 }
