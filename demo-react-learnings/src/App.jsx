@@ -4,9 +4,8 @@
 // import LearningSuspense from "./LearningSuspense/LearningSuspense";
 // import ControlledComponent from "./LearningControlledAndUnControlledComponent/ControlledComponent";
 // import UncontrolledComponent from "./LearningControlledAndUnControlledComponent/UncontrolledComponent";
-// import LearningRoutes from "./LearningRouterWithSuspense/LearningRoutes";
-
-import Account from "./LearningUseReducer/Account";
+import LearningRoutes from "./LearningRouterWithSuspense/LearningRoutes";
+// import Account from "./LearningUseReducer/Account";
 
 function App() {
 	return (
@@ -18,8 +17,8 @@ function App() {
 			</Context> */}
 			{/* <ControlledComponent />
 			<UncontrolledComponent /> */}
-			{/* <LearningRoutes /> */}
-			<Account />
+			<LearningRoutes />
+			{/* <Account /> */}
 		</div>
 	);
 }
