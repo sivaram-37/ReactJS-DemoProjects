@@ -220,12 +220,16 @@ label {
 	color: #333;
 }
 
-.action-btn {
+.open-btn {
 	background-color: #2ecc71;
 }
 
-.action-btn:hover {
+.open-btn:hover {
 	background-color: #27ae60;
+}
+
+.close-btn {
+	background-color: #ff1919;
 }
 
 @media screen and (max-width: 768px) {

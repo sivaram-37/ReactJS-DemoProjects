@@ -26,9 +26,10 @@ header {
 }
 
 header h1 {
-	font-weight: 600;
+	font-weight: 500;
 	font-size: 2rem;
 	font-family: "Nerko One";
+	letter-spacing: 1px;
 }
 
 .search {
@@ -41,16 +42,16 @@ header h1 {
 	width: 100%;
 	padding: 0.75rem 1rem;
 	border-radius: 0.5rem;
-	border: 1px solid #dfe6e9;
+	border: 1px solid #008ac5;
 	font-size: 1rem;
-	background-color: #fff;
+	background-color: #90d3ff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 	transition: all 0.3s ease;
 }
 
 .search-input:focus {
 	border-color: #3498db;
-	background-color: #a8dcff;
+	background-color: #d4eeff;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	outline: none;
 }
@@ -212,16 +213,23 @@ label {
 }
 
 .addnotes-btn:hover {
-	background-color: #73ff73;
-	color: #333;
+	background-color: #1877b6;
 }
 
-.action-btn {
+.open-btn {
 	background-color: #2ecc71;
 }
 
-.action-btn:hover {
+.open-btn:hover {
 	background-color: #27ae60;
+}
+
+.close-btn {
+	background-color: #ff4c4c;
+}
+
+.close-btn:hover {
+	background-color: #ff1919;
 }
 
 @media screen and (max-width: 768px) {
